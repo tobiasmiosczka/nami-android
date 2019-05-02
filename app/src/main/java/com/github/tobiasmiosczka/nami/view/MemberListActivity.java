@@ -1,4 +1,4 @@
-package com.github.tobiasmiosczka.nami;
+package com.github.tobiasmiosczka.nami.view;
 
 import android.arch.lifecycle.Observer;
 import android.content.Intent;
@@ -8,6 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ProgressBar;
+
+import com.github.tobiasmiosczka.nami.view.adapter.MemberListRecyclerViewAdapter;
+import com.github.tobiasmiosczka.nami.model.Nami;
+import com.github.tobiasmiosczka.nami.R;
 
 import java.util.List;
 

@@ -3,4 +3,20 @@
     <color name="colorPrimary">#003056</color>
     <color name="colorPrimaryDark">#00223F</color>
     <color name="colorAccent">#810a1a</color>
+
+    <color name="colorPrimaryWoelflinge">#ff6400</color>
+    <color name="colorPrimaryDarkWoelflinge">#815848</color>
+    <color name="colorAccentWoelflinge">#009fe3</color>
+
+    <color name="colorPrimaryJungpfadfinder">#2f53a7</color>
+    <color name="colorPrimaryDarkJungpfadfinder">#009fe3</color>
+    <color name="colorAccentJungpfadfinder">#93aa0d</color>
+
+    <color name="colorPrimaryPfadfinder">#00823c</color>
+    <color name="colorPrimaryDarkPfadfinder">#c8d419</color>
+    <color name="colorAccentPfadfinder">#007a8c</color>
+
+    <color name="colorPrimaryRover">#cc1f2f</color>
+    <color name="colorPrimaryDarkRover">#1d1d1d</color>
+    <color name="colorAccentRover">#9d9d9c</color>
 </resources>

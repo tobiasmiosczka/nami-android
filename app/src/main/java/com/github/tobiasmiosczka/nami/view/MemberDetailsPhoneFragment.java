@@ -1,4 +1,4 @@
-package com.github.tobiasmiosczka.nami;
+package com.github.tobiasmiosczka.nami.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.tobiasmiosczka.nami.model.Nami;
+import com.github.tobiasmiosczka.nami.view.adapter.PhoneListRecyclerViewAdapter;
+import com.github.tobiasmiosczka.nami.R;
 import com.github.tobiasmiosczka.nami.program.PhoneContact;
 
 import java.util.ArrayList;

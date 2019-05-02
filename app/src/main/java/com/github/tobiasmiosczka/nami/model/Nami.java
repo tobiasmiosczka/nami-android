@@ -1,8 +1,9 @@
-package com.github.tobiasmiosczka.nami;
+package com.github.tobiasmiosczka.nami.model;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
+import com.github.tobiasmiosczka.nami.R;
 import com.github.tobiasmiosczka.nami.program.NaMiDataLoader;
 import com.github.tobiasmiosczka.nami.program.NamiDataLoaderHandler;
 import com.github.tobiasmiosczka.nami.program.SortedList;
@@ -17,6 +18,8 @@ import nami.connector.credentials.NamiCredentials;
 import nami.connector.exception.NamiLoginException;
 import nami.connector.namitypes.NamiMitglied;
 import nami.connector.namitypes.NamiSearchedValues;
+import nami.connector.namitypes.enums.NamiMitgliedStatus;
+import nami.connector.namitypes.enums.NamiStufe;
 
 public class Nami implements NamiDataLoaderHandler {
 
@@ -48,6 +51,7 @@ public class Nami implements NamiDataLoaderHandler {
 
     public void loadData() {
         NamiSearchedValues namiSearchedValues = new NamiSearchedValues();
+        namiSearchedValues.setMitgliedStatus(NamiMitgliedStatus.AKTIV);
         NaMiDataLoader dataLoader = new NaMiDataLoader(this.namiConnector, namiSearchedValues, this);
         dataLoader.start();
     }
@@ -87,7 +91,6 @@ public class Nami implements NamiDataLoaderHandler {
 
     @Override
     public void onDone(long l) {
-
     }
 
     @Override
@@ -95,5 +98,17 @@ public class Nami implements NamiDataLoaderHandler {
         //TODO:add exception handling
         isLoggedIn.postValue(false);
         e.printStackTrace();
+    }
+
+    public static int getTheme(NamiStufe stufe) {
+        if (stufe == null)
+            return R.style.AppTheme;
+        switch (stufe) {
+            case WOELFLING: return R.style.AppTheme_Woelflinge;
+            case JUNGPFADFINDER: return R.style.AppTheme_Jungpfadfinder;
+            case PFADFINDER: return R.style.AppTheme_Pfadfinder;
+            case ROVER: return R.style.AppTheme_Rover;
+            default: return R.style.AppTheme;
+        }
     }
 }

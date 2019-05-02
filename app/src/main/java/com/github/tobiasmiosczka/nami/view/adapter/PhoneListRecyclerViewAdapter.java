@@ -1,4 +1,4 @@
-package com.github.tobiasmiosczka.nami;
+package com.github.tobiasmiosczka.nami.view.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.github.tobiasmiosczka.nami.R;
 import com.github.tobiasmiosczka.nami.program.PhoneContact;
 
 import java.util.List;

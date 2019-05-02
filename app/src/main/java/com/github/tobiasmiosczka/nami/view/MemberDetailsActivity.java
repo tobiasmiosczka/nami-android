@@ -1,4 +1,4 @@
-package com.github.tobiasmiosczka.nami;
+package com.github.tobiasmiosczka.nami.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.github.tobiasmiosczka.nami.view.adapter.MemberDetailsPageAdapter;
+import com.github.tobiasmiosczka.nami.model.Nami;
+import com.github.tobiasmiosczka.nami.R;
 
 import nami.connector.namitypes.NamiMitglied;
 
@@ -18,13 +22,15 @@ public class MemberDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_member_details);
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", -1);
         member = NAMI.getMemberById(id);
         if(member == null)
             finish();
+
+        setTheme(Nami.getTheme(member.getStufe()));
+        setContentView(R.layout.activity_member_details);
 
         TextView title = findViewById(R.id.title);
         title.setText(member.getVorname() + " " + member.getNachname());

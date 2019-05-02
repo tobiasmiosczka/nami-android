@@ -8,6 +8,34 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.Woelflinge" parent="ThemeOverlay.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryWoelflinge</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkWoelflinge</item>
+        <item name="colorAccent">@color/colorAccentWoelflinge</item>
+    </style>
+
+    <style name="AppTheme.Jungpfadfinder" parent="ThemeOverlay.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryJungpfadfinder</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkJungpfadfinder</item>
+        <item name="colorAccent">@color/colorAccentJungpfadfinder</item>
+    </style>
+
+    <style name="AppTheme.Pfadfinder" parent="ThemeOverlay.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryPfadfinder</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkPfadfinder</item>
+        <item name="colorAccent">@color/colorAccentPfadfinder</item>
+    </style>
+
+    <style name="AppTheme.Rover" parent="ThemeOverlay.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryRover</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkRover</item>
+        <item name="colorAccent">@color/colorAccentRover</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -1,4 +1,4 @@
-package com.github.tobiasmiosczka.nami;
+package com.github.tobiasmiosczka.nami.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.github.tobiasmiosczka.nami.R;
+import com.github.tobiasmiosczka.nami.view.MemberDetailsActivity;
 
 import java.util.List;
 

@@ -1,9 +1,12 @@
-package com.github.tobiasmiosczka.nami;
+package com.github.tobiasmiosczka.nami.view.adapter;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.github.tobiasmiosczka.nami.view.MemberDetailsGeneralFragment;
+import com.github.tobiasmiosczka.nami.view.MemberDetailsPhoneFragment;
 
 public class MemberDetailsPageAdapter extends FragmentPagerAdapter {
 

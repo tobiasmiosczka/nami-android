@@ -1,4 +1,4 @@
-package com.github.tobiasmiosczka.nami;
+package com.github.tobiasmiosczka.nami.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -24,6 +24,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.github.tobiasmiosczka.nami.model.Nami;
+import com.github.tobiasmiosczka.nami.R;
 
 import java.io.IOException;
 import java.util.ArrayList;
