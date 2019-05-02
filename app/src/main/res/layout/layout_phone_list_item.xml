@@ -6,21 +6,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/member_list_item_layout">
 
-    <TextView
-        android:id="@+id/phone_list_item_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="#000"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-
-        tools:text="Max Musterman"/>
-
     <Button
         android:id="@+id/phone_list_item_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="Anrufen" />
+        android:layout_alignParentEnd="true"
+        android:text="@string/call" />
+
+    <TextView
+        android:id="@+id/phone_list_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="TextView" />
 </RelativeLayout>

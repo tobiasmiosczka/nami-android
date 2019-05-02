@@ -9,4 +9,5 @@
     <string name="title_activity_member_details">Mitglieder</string>
     <string name="tab_general">Allgemein</string>
     <string name="tab_phone">Telefon</string>
+    <string name="call">Anrufen</string>
 </resources>

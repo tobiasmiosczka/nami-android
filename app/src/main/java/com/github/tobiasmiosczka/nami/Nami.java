@@ -23,6 +23,8 @@ public class Nami implements NamiDataLoaderHandler {
     private NamiConnector namiConnector;
     private MutableLiveData<List<NamiMitglied>> memberList = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoggedIn = new MutableLiveData<>();
+    private MutableLiveData<Integer> progressCurrent = new MutableLiveData<>();
+    private MutableLiveData<Integer> progressMax = new MutableLiveData<>();
 
     private static Nami NAMI = new Nami();
     public static Nami getInstance() {return NAMI;}
@@ -54,6 +56,14 @@ public class Nami implements NamiDataLoaderHandler {
         return this.memberList;
     }
 
+    public LiveData<Integer> getProgressCurrent() {
+        return progressCurrent;
+    }
+
+    public LiveData<Integer> getProgressMax() {
+        return progressMax;
+    }
+
     public NamiMitglied getMemberById(int id) {
         for (NamiMitglied m : memberList.getValue()) {
             if (m.getId() == id)
@@ -71,6 +81,8 @@ public class Nami implements NamiDataLoaderHandler {
         List<NamiMitglied> m = memberList.getValue();
         m.add(namiMitglied);
         memberList.postValue(m);
+        progressCurrent.postValue(i);
+        progressMax.postValue(i1);
     }
 
     @Override

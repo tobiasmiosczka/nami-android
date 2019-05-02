@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ProgressBar;
 
 import java.util.List;
 
@@ -30,6 +31,23 @@ public class MemberListActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<NamiMitglied> namiMitglieds) {
                 recyclerViewAdapter.notifyDataSetChanged();
+            }
+        });
+
+
+        final ProgressBar progressBar = findViewById(R.id.progress_download);
+
+        NAMI.getProgressCurrent().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(@Nullable Integer integer) {
+                progressBar.setProgress(integer);
+            }
+        });
+
+        NAMI.getProgressMax().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(@Nullable Integer integer) {
+                progressBar.setMax(integer);
             }
         });
 

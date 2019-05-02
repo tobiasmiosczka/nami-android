@@ -20,9 +20,9 @@ public class PhoneListRecyclerViewAdapter extends RecyclerView.Adapter<PhoneList
     private List<PhoneContact> memberList;
     private Activity activity;
 
-    public PhoneListRecyclerViewAdapter(Activity activity, List<PhoneContact> memberList) {
+    public PhoneListRecyclerViewAdapter(Activity activity, List<PhoneContact> phoneContacts) {
         this.activity = activity;
-        this.memberList = memberList;
+        this.memberList = phoneContacts;
     }
 
     @NonNull
@@ -34,8 +34,8 @@ public class PhoneListRecyclerViewAdapter extends RecyclerView.Adapter<PhoneList
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        PhoneContact namiMitglied = memberList.get(i);
-        viewHolder.name.setText(namiMitglied.getPhoneNumber() + " (" + namiMitglied.getName() + ")");
+        PhoneContact phoneContact = memberList.get(i);
+        viewHolder.name.setText(phoneContact.getPhoneNumber() + ((phoneContact.getName() == null) ? "" : " (" + phoneContact.getName() + ")"));
         viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,8 +50,8 @@ public class PhoneListRecyclerViewAdapter extends RecyclerView.Adapter<PhoneList
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        Button button;
-        TextView name;
+        private Button button;
+        private TextView name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

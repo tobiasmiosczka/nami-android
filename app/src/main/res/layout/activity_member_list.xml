@@ -4,10 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MemberListActivity">
+
+    <FrameLayout
+        android:id="@+id/progress_download_layout"
+        android:layout_width="match_parent"
+        android:layout_height="4dp">
+
+        <ProgressBar
+            android:id="@+id/progress_download"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_phone_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_view_phone_list">
+        android:layout_below="@id/progress_download_layout">
 
     </android.support.v7.widget.RecyclerView>
 </RelativeLayout>
