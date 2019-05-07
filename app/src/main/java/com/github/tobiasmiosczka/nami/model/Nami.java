@@ -1,7 +1,7 @@
 package com.github.tobiasmiosczka.nami.model;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.github.tobiasmiosczka.nami.R;
 import com.github.tobiasmiosczka.nami.program.NaMiDataLoader;
@@ -102,13 +102,13 @@ public class Nami implements NamiDataLoaderHandler {
 
     public static int getTheme(NamiStufe stufe) {
         if (stufe == null)
-            return R.style.AppTheme;
+            return R.style.AppTheme_Default;
         switch (stufe) {
             case WOELFLING: return R.style.AppTheme_Woelflinge;
             case JUNGPFADFINDER: return R.style.AppTheme_Jungpfadfinder;
             case PFADFINDER: return R.style.AppTheme_Pfadfinder;
             case ROVER: return R.style.AppTheme_Rover;
-            default: return R.style.AppTheme;
+            default: return R.style.AppTheme_Default;
         }
     }
 }

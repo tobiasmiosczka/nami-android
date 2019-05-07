@@ -1,9 +1,9 @@
 package com.github.tobiasmiosczka.nami.view.adapter;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.github.tobiasmiosczka.nami.view.MemberDetailsGeneralFragment;
 import com.github.tobiasmiosczka.nami.view.MemberDetailsPhoneFragment;

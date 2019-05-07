@@ -2,35 +2,36 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Default" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="AppTheme.Woelflinge" parent="ThemeOverlay.AppCompat.Light">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryWoelflinge</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkWoelflinge</item>
         <item name="colorAccent">@color/colorAccentWoelflinge</item>
     </style>
 
     <style name="AppTheme.Jungpfadfinder" parent="ThemeOverlay.AppCompat.Light">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryJungpfadfinder</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkJungpfadfinder</item>
         <item name="colorAccent">@color/colorAccentJungpfadfinder</item>
     </style>
 
     <style name="AppTheme.Pfadfinder" parent="ThemeOverlay.AppCompat.Light">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryPfadfinder</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkPfadfinder</item>
         <item name="colorAccent">@color/colorAccentPfadfinder</item>
     </style>
 
     <style name="AppTheme.Rover" parent="ThemeOverlay.AppCompat.Light">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryRover</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkRover</item>
         <item name="colorAccent">@color/colorAccentRover</item>

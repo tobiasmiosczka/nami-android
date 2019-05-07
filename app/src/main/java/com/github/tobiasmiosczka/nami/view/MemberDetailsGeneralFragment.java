@@ -1,7 +1,7 @@
 package com.github.tobiasmiosczka.nami.view;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +11,16 @@ import com.github.tobiasmiosczka.nami.R;
 import com.github.tobiasmiosczka.nami.model.Nami;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import de.cketti.mailto.EmailIntentBuilder;
 import nami.connector.namitypes.NamiMitglied;
 import nami.connector.namitypes.enums.NamiGeschlecht;
 
 public class MemberDetailsGeneralFragment extends Fragment {
 
     private static final Nami NAMI = Nami.getInstance();
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
+    private static final DateFormat DATE_FORMAT = DateFormat.getDateInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class MemberDetailsGeneralFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_member_details_general, container, false);
 
         int id = getArguments().getInt("id");
-        NamiMitglied member = NAMI.getMemberById(id);
+        final NamiMitglied member = NAMI.getMemberById(id);
         //TODO: what if member is null?
 
         TextView tvFirstname = view.findViewById(R.id.tv_firstname);
@@ -46,6 +46,29 @@ public class MemberDetailsGeneralFragment extends Fragment {
 
         TextView tvBirthdate = view.findViewById(R.id.tv_birthdate);
         tvBirthdate.setText(dateToString(member.getGeburtsDatum()));
+
+        TextView tvEmail = view.findViewById(R.id.tv_email);
+        tvEmail.setText(member.getEmail());
+        tvEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EmailIntentBuilder.from(getActivity())
+                        .to(member.getEmail())
+                        .start();
+            }
+        });
+
+        //TODO: implement
+        TextView tvEmailParents = view.findViewById(R.id.tv_email_parents);
+        tvEmailParents.setText(member.getEmailVertretungsberechtigter());
+        tvEmailParents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EmailIntentBuilder.from(getActivity())
+                        .to(member.getEmailVertretungsberechtigter())
+                        .start();
+            }
+        });
 
         return view;
     }

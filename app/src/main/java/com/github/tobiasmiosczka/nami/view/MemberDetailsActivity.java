@@ -2,14 +2,15 @@ package com.github.tobiasmiosczka.nami.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.github.tobiasmiosczka.nami.view.adapter.MemberDetailsPageAdapter;
-import com.github.tobiasmiosczka.nami.model.Nami;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.github.tobiasmiosczka.nami.R;
+import com.github.tobiasmiosczka.nami.model.Nami;
+import com.github.tobiasmiosczka.nami.view.adapter.MemberDetailsPageAdapter;
+import com.google.android.material.tabs.TabLayout;
 
 import nami.connector.namitypes.NamiMitglied;
 
@@ -39,21 +40,21 @@ public class MemberDetailsActivity extends AppCompatActivity {
         final ViewPager viewPager = findViewById(R.id.view_pager);
         final TabLayout tabLayout = findViewById(R.id.tablayout);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                                               @Override
-                                               public void onTabSelected(TabLayout.Tab tab) {
-                                                   viewPager.setCurrentItem(tab.getPosition());
-                                               }
+                   @Override
+                   public void onTabSelected(TabLayout.Tab tab) {
+                       viewPager.setCurrentItem(tab.getPosition());
+                   }
 
-                                               @Override
-                                               public void onTabUnselected(TabLayout.Tab tab) {
+                   @Override
+                   public void onTabUnselected(TabLayout.Tab tab) {
 
-                                               }
+                   }
 
-                                               @Override
-                                               public void onTabReselected(TabLayout.Tab tab) {
+                   @Override
+                   public void onTabReselected(TabLayout.Tab tab) {
 
-                                               }
-                                           }
+                   }
+               }
             );
         viewPager.setAdapter(pageAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
