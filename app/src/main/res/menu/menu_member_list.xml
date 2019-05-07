@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom" />
+    <group
+        android:id="@+id/search_stufe"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/search_all"
+            android:checked="true"
+            android:onClick="onStufeselected"
+            android:title="Alle" />
+        <item
+            android:id="@+id/search_woelflinge"
+            android:onClick="onStufeselected"
+            android:title="Wölflinge" />
+        <item
+            android:id="@+id/search_jungpfadfinder"
+            android:onClick="onStufeselected"
+            android:title="Jungpfadfinder" />
+        <item
+            android:id="@+id/search_pfadfinder"
+            android:onClick="onStufeselected"
+            android:title="Pfadfinder" />
+        <item
+            android:id="@+id/search_rover"
+            android:onClick="onStufeselected"
+            android:title="Rover" />
+    </group>
+
+</menu>

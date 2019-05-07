@@ -2,6 +2,7 @@ package com.github.tobiasmiosczka.nami.model;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import com.github.tobiasmiosczka.nami.R;
 import com.github.tobiasmiosczka.nami.program.NaMiDataLoader;
@@ -25,6 +26,11 @@ public class Nami implements NamiDataLoaderHandler {
 
     private NamiConnector namiConnector;
     private MutableLiveData<List<NamiMitglied>> memberList = new MutableLiveData<>();
+    private MutableLiveData<List<NamiMitglied>> filteredmemberList = new MutableLiveData<>();
+
+    private MutableLiveData<String> nameFilter = new MutableLiveData<>();
+    private MutableLiveData<NamiStufe> stufeFilter = new MutableLiveData<>();
+
     private MutableLiveData<Boolean> isLoggedIn = new MutableLiveData<>();
     private MutableLiveData<Integer> progressCurrent = new MutableLiveData<>();
     private MutableLiveData<Integer> progressMax = new MutableLiveData<>();
@@ -39,7 +45,36 @@ public class Nami implements NamiDataLoaderHandler {
                 return (o1.getVorname() + o1.getNachname()).compareTo(o2.getVorname()+o2.getNachname());
             }
         }));
+        filteredmemberList.setValue(new SortedList<>(new Comparator<NamiMitglied>() {
+            @Override
+            public int compare(NamiMitglied o1, NamiMitglied o2) {
+                return (o1.getVorname() + o1.getNachname()).compareTo(o2.getVorname()+o2.getNachname());
+            }
+        }));
         isLoggedIn.setValue(false);
+        nameFilter.setValue("");
+        stufeFilter.setValue(null);
+
+        memberList.observeForever(new Observer<List<NamiMitglied>>() {
+            @Override
+            public void onChanged(List<NamiMitglied> namiMitglieds) {
+                updateFilter();
+            }
+        });
+
+        nameFilter.observeForever(new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                updateFilter();
+            }
+        });
+
+        stufeFilter.observeForever(new Observer<NamiStufe>() {
+            @Override
+            public void onChanged(NamiStufe stufe) {
+                updateFilter();
+            }
+        });
     }
 
     public void login(String username, String password) throws IOException, NamiLoginException {
@@ -58,6 +93,26 @@ public class Nami implements NamiDataLoaderHandler {
 
     public LiveData<List<NamiMitglied>> getMemberList() {
         return this.memberList;
+    }
+
+    public LiveData<List<NamiMitglied>> getFilteredMemberList() {
+        return this.filteredmemberList;
+    }
+
+    public LiveData<String> getNameFilter() {
+        return this.nameFilter;
+    }
+
+    public void setNameFilter(String nameFilter) {
+        this.nameFilter.postValue(nameFilter);
+    }
+
+    public void setStufeFilter(NamiStufe stufe) {
+        this.stufeFilter.postValue(stufe);
+    }
+
+    public LiveData<NamiStufe> getStufeFilter() {
+        return stufeFilter;
     }
 
     public LiveData<Integer> getProgressCurrent() {
@@ -91,12 +146,12 @@ public class Nami implements NamiDataLoaderHandler {
 
     @Override
     public void onDone(long l) {
+
     }
 
     @Override
     public void onException(String s, Exception e) {
         //TODO:add exception handling
-        isLoggedIn.postValue(false);
         e.printStackTrace();
     }
 
@@ -110,5 +165,21 @@ public class Nami implements NamiDataLoaderHandler {
             case ROVER: return R.style.AppTheme_Rover;
             default: return R.style.AppTheme_Default;
         }
+    }
+
+    private void updateFilter() {
+        List<NamiMitglied> l = filteredmemberList.getValue();
+        l.clear();
+        for (NamiMitglied member : memberList.getValue()) {
+            String n = member.getVorname() + " " + member.getNachname();
+            //name
+            if (!n.toLowerCase().contains(nameFilter.getValue().toLowerCase()))
+                continue;
+            //stufe
+            if (stufeFilter.getValue() != null && member.getStufe() != stufeFilter.getValue())
+                continue;
+            l.add(member);
+        }
+        filteredmemberList.postValue(l);
     }
 }
