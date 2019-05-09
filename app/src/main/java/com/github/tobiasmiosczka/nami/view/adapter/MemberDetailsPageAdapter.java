@@ -10,14 +10,11 @@ import com.github.tobiasmiosczka.nami.view.MemberDetailsPhoneFragment;
 
 public class MemberDetailsPageAdapter extends FragmentPagerAdapter {
 
-    private int id;
-
-    MemberDetailsGeneralFragment memberDetailsGeneralFragment;
-    MemberDetailsPhoneFragment memberDetailsPhoneFragment;
+    final MemberDetailsGeneralFragment memberDetailsGeneralFragment;
+    final MemberDetailsPhoneFragment memberDetailsPhoneFragment;
 
     public MemberDetailsPageAdapter(FragmentManager fm, int id) {
         super(fm);
-        this.id = id;
 
         Bundle bundle = new Bundle();
         bundle.putInt("id", id);

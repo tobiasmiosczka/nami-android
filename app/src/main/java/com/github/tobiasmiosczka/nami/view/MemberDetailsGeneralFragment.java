@@ -1,11 +1,13 @@
 package com.github.tobiasmiosczka.nami.view;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.github.tobiasmiosczka.nami.R;
 import com.github.tobiasmiosczka.nami.model.Nami;
@@ -23,7 +25,7 @@ public class MemberDetailsGeneralFragment extends Fragment {
     private static final DateFormat DATE_FORMAT = DateFormat.getDateInstance();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.fragment_member_details_general, container, false);
@@ -49,26 +51,16 @@ public class MemberDetailsGeneralFragment extends Fragment {
 
         TextView tvEmail = view.findViewById(R.id.tv_email);
         tvEmail.setText(member.getEmail());
-        tvEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EmailIntentBuilder.from(getActivity())
-                        .to(member.getEmail())
-                        .start();
-            }
-        });
+        tvEmail.setOnClickListener(v -> EmailIntentBuilder.from(getActivity())
+                .to(member.getEmail())
+                .start());
 
         //TODO: implement
         TextView tvEmailParents = view.findViewById(R.id.tv_email_parents);
         tvEmailParents.setText(member.getEmailVertretungsberechtigter());
-        tvEmailParents.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EmailIntentBuilder.from(getActivity())
-                        .to(member.getEmailVertretungsberechtigter())
-                        .start();
-            }
-        });
+        tvEmailParents.setOnClickListener(v -> EmailIntentBuilder.from(getActivity())
+                .to(member.getEmailVertretungsberechtigter())
+                .start());
 
         return view;
     }

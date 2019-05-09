@@ -1,14 +1,15 @@
 <resources>
     <string name="app_name">NaMi</string>
+    <string name="woelflinge">Wölflinge</string>
+    <string name="jungpfadfinder">Jungpfadfinder</string>
+    <string name="pfadfinder">Pfadfinder</string>
+    <string name="rover">Rover</string>
     <!-- Strings related to login -->
     <string name="prompt_username">Nutzername</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Login</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="title_activity_member_details">Mitglieder</string>
-    <string name="tab_general">Allgemein</string>
-    <string name="tab_phone">Telefon</string>
     <string name="call">Anrufen</string>
     <string name="missing_version">Version unbekannt.</string>
     <string name="general">Allgemein</string>
@@ -16,6 +17,7 @@
 
     <!-- Strings related to member list -->
     <string name="member">Mitglieder</string>
+    <string name="search">Suche</string>
 
     <!-- Strings related to member details -->
     <string name="member_first_name">Vorname: </string>
@@ -25,4 +27,6 @@
     <string name="member_gender">Geschlecht: </string>
     <string name="member_email">Email: </string>
     <string name="member_email_parents">Email Eltern: </string>
+    <string name="app_version">Version:</string>
+    <string name="all">Alle</string>
 </resources>

@@ -2,7 +2,6 @@ package com.github.tobiasmiosczka.nami.model;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
 import com.github.tobiasmiosczka.nami.R;
 import com.github.tobiasmiosczka.nami.program.NaMiDataLoader;
@@ -10,7 +9,6 @@ import com.github.tobiasmiosczka.nami.program.NamiDataLoaderHandler;
 import com.github.tobiasmiosczka.nami.program.SortedList;
 
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.List;
 
 import nami.connector.NamiConnector;
@@ -22,59 +20,33 @@ import nami.connector.namitypes.NamiSearchedValues;
 import nami.connector.namitypes.enums.NamiMitgliedStatus;
 import nami.connector.namitypes.enums.NamiStufe;
 
+//TODO: Make thread safe
 public class Nami implements NamiDataLoaderHandler {
 
     private NamiConnector namiConnector;
-    private MutableLiveData<List<NamiMitglied>> memberList = new MutableLiveData<>();
-    private MutableLiveData<List<NamiMitglied>> filteredmemberList = new MutableLiveData<>();
+    private final MutableLiveData<List<NamiMitglied>> memberList = new MutableLiveData<>();
+    private final MutableLiveData<List<NamiMitglied>> filteredmemberList = new MutableLiveData<>();
 
-    private MutableLiveData<String> nameFilter = new MutableLiveData<>();
-    private MutableLiveData<NamiStufe> stufeFilter = new MutableLiveData<>();
+    private final MutableLiveData<String> nameFilter = new MutableLiveData<>();
+    private final MutableLiveData<NamiStufe> stufeFilter = new MutableLiveData<>();
 
-    private MutableLiveData<Boolean> isLoggedIn = new MutableLiveData<>();
-    private MutableLiveData<Integer> progressCurrent = new MutableLiveData<>();
-    private MutableLiveData<Integer> progressMax = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isLoggedIn = new MutableLiveData<>();
+    private final MutableLiveData<Integer> progressCurrent = new MutableLiveData<>();
+    private final MutableLiveData<Integer> progressMax = new MutableLiveData<>();
 
-    private static Nami NAMI = new Nami();
+    private static final Nami NAMI = new Nami();
     public static Nami getInstance() {return NAMI;}
 
     private Nami() {
-        memberList.setValue(new SortedList<>(new Comparator<NamiMitglied>() {
-            @Override
-            public int compare(NamiMitglied o1, NamiMitglied o2) {
-                return (o1.getVorname() + o1.getNachname()).compareTo(o2.getVorname()+o2.getNachname());
-            }
-        }));
-        filteredmemberList.setValue(new SortedList<>(new Comparator<NamiMitglied>() {
-            @Override
-            public int compare(NamiMitglied o1, NamiMitglied o2) {
-                return (o1.getVorname() + o1.getNachname()).compareTo(o2.getVorname()+o2.getNachname());
-            }
-        }));
+        memberList.setValue(new SortedList<>((o1, o2) -> (o1.getVorname() + o1.getNachname()).compareTo(o2.getVorname()+o2.getNachname())));
+        filteredmemberList.setValue(new SortedList<>((o1, o2) -> (o1.getVorname() + o1.getNachname()).compareTo(o2.getVorname()+o2.getNachname())));
         isLoggedIn.setValue(false);
         nameFilter.setValue("");
         stufeFilter.setValue(null);
 
-        memberList.observeForever(new Observer<List<NamiMitglied>>() {
-            @Override
-            public void onChanged(List<NamiMitglied> namiMitglieds) {
-                updateFilter();
-            }
-        });
-
-        nameFilter.observeForever(new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                updateFilter();
-            }
-        });
-
-        stufeFilter.observeForever(new Observer<NamiStufe>() {
-            @Override
-            public void onChanged(NamiStufe stufe) {
-                updateFilter();
-            }
-        });
+        memberList.observeForever(namiMitglieds -> updateFilter());
+        nameFilter.observeForever(s -> updateFilter());
+        stufeFilter.observeForever(stufe -> updateFilter());
     }
 
     public void login(String username, String password) throws IOException, NamiLoginException {
@@ -89,10 +61,6 @@ public class Nami implements NamiDataLoaderHandler {
         namiSearchedValues.setMitgliedStatus(NamiMitgliedStatus.AKTIV);
         NaMiDataLoader dataLoader = new NaMiDataLoader(this.namiConnector, namiSearchedValues, this);
         dataLoader.start();
-    }
-
-    public LiveData<List<NamiMitglied>> getMemberList() {
-        return this.memberList;
     }
 
     public LiveData<List<NamiMitglied>> getFilteredMemberList() {

@@ -3,13 +3,14 @@ package com.github.tobiasmiosczka.nami.view.adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.tobiasmiosczka.nami.R;
 import com.github.tobiasmiosczka.nami.program.PhoneContact;
@@ -18,8 +19,8 @@ import java.util.List;
 
 public class PhoneListRecyclerViewAdapter extends RecyclerView.Adapter<PhoneListRecyclerViewAdapter.ViewHolder>{
 
-    private List<PhoneContact> memberList;
-    private Activity activity;
+    private final List<PhoneContact> memberList;
+    private final Activity activity;
 
     public PhoneListRecyclerViewAdapter(Activity activity, List<PhoneContact> phoneContacts) {
         this.activity = activity;
@@ -37,12 +38,7 @@ public class PhoneListRecyclerViewAdapter extends RecyclerView.Adapter<PhoneList
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
         PhoneContact phoneContact = memberList.get(i);
         viewHolder.name.setText(phoneContact.getPhoneNumber() + ((phoneContact.getName() == null) ? "" : " (" + phoneContact.getName() + ")"));
-        viewHolder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                call(memberList.get(viewHolder.getAdapterPosition()).getPhoneNumber());
-            }
-        });
+        viewHolder.button.setOnClickListener(v -> call(memberList.get(viewHolder.getAdapterPosition()).getPhoneNumber()));
     }
 
     @Override
@@ -51,8 +47,8 @@ public class PhoneListRecyclerViewAdapter extends RecyclerView.Adapter<PhoneList
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private Button button;
-        private TextView name;
+        private final Button button;
+        private final TextView name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

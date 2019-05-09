@@ -23,8 +23,8 @@ import nami.connector.namitypes.enums.NamiStufe;
 
 public class MemberListRecyclerViewAdapter extends RecyclerView.Adapter<MemberListRecyclerViewAdapter.ViewHolder> implements FastScrollRecyclerView.SectionedAdapter {
 
-    private List<NamiMitglied> memberList;
-    private Context context;
+    private final List<NamiMitglied> memberList;
+    private final Context context;
 
     public MemberListRecyclerViewAdapter(Context context, List<NamiMitglied> memberList) {
         this.context = context;
@@ -59,13 +59,10 @@ public class MemberListRecyclerViewAdapter extends RecyclerView.Adapter<MemberLi
         final NamiMitglied member  = memberList.get(i);
         viewHolder.name.setText(getPreviewText(member));
         viewHolder.image.setImageResource(getCircle(member.getStufe()));
-        viewHolder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MemberDetailsActivity.class);
-                intent.putExtra("id", member.getId());
-                context.startActivity(intent);
-            }
+        viewHolder.layout.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MemberDetailsActivity.class);
+            intent.putExtra("id", member.getId());
+            context.startActivity(intent);
         });
     }
 
@@ -84,9 +81,9 @@ public class MemberListRecyclerViewAdapter extends RecyclerView.Adapter<MemberLi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        RelativeLayout layout;
-        ImageView image;
-        TextView name;
+        final RelativeLayout layout;
+        final ImageView image;
+        final TextView name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

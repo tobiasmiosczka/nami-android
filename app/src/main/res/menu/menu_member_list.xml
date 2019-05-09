@@ -4,33 +4,31 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_search"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="Search"
+        android:title="@string/search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom" />
-    <group
-        android:id="@+id/search_stufe"
-        android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/search_all"
             android:checked="true"
             android:onClick="onStufeselected"
-            android:title="Alle" />
+            android:title="@string/all" />
         <item
             android:id="@+id/search_woelflinge"
             android:onClick="onStufeselected"
-            android:title="Wölflinge" />
+            android:title="@string/woelflinge" />
         <item
             android:id="@+id/search_jungpfadfinder"
             android:onClick="onStufeselected"
-            android:title="Jungpfadfinder" />
+            android:title="@string/jungpfadfinder" />
         <item
             android:id="@+id/search_pfadfinder"
             android:onClick="onStufeselected"
-            android:title="Pfadfinder" />
+            android:title="@string/pfadfinder" />
         <item
             android:id="@+id/search_rover"
             android:onClick="onStufeselected"
-            android:title="Rover" />
+            android:title="@string/rover" />
     </group>
 
 </menu>

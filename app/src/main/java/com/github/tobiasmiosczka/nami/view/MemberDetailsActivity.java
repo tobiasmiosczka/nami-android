@@ -18,45 +18,45 @@ public class MemberDetailsActivity extends AppCompatActivity {
 
     private static final Nami NAMI = Nami.getInstance();
 
-    private NamiMitglied member;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", -1);
-        member = NAMI.getMemberById(id);
-        if(member == null)
+        NamiMitglied member = NAMI.getMemberById(id);
+
+        if (member == null)
             finish();
 
-        setTheme(Nami.getTheme(member.getStufe()));
-        setContentView(R.layout.activity_member_details);
+        if (member != null) {
+            setTheme(Nami.getTheme(member.getStufe()));
+            setContentView(R.layout.activity_member_details);
 
-        TextView title = findViewById(R.id.title);
-        title.setText(member.getVorname() + " " + member.getNachname());
+            TextView title = findViewById(R.id.title);
+            title.setText(member.getVorname() + " " + member.getNachname());
 
-        final MemberDetailsPageAdapter pageAdapter = new MemberDetailsPageAdapter(getSupportFragmentManager(), id);
-        final ViewPager viewPager = findViewById(R.id.view_pager);
-        final TabLayout tabLayout = findViewById(R.id.tablayout);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                   @Override
-                   public void onTabSelected(TabLayout.Tab tab) {
-                       viewPager.setCurrentItem(tab.getPosition());
-                   }
+            final MemberDetailsPageAdapter pageAdapter = new MemberDetailsPageAdapter(getSupportFragmentManager(), id);
+            final ViewPager viewPager = findViewById(R.id.view_pager);
+            final TabLayout tabLayout = findViewById(R.id.tablayout);
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
 
-                   @Override
-                   public void onTabUnselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
 
-                   }
+                }
 
-                   @Override
-                   public void onTabReselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
 
-                   }
-               }
-            );
-        viewPager.setAdapter(pageAdapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+                }
+            });
+            viewPager.setAdapter(pageAdapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        }
     }
 }
