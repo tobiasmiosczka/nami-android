@@ -35,7 +35,10 @@ public class Nami implements NamiDataLoaderHandler {
     private final MutableLiveData<Integer> progressMax = new MutableLiveData<>();
 
     private static final Nami NAMI = new Nami();
-    public static Nami getInstance() {return NAMI;}
+
+    public static Nami getInstance() {
+        return NAMI;
+    }
 
     private Nami() {
         memberList.setValue(new SortedList<>((o1, o2) -> (o1.getVorname() + o1.getNachname()).compareTo(o2.getVorname()+o2.getNachname())));
