@@ -25,6 +25,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.tobiasmiosczka.nami.R;
+import com.github.tobiasmiosczka.nami.Updater;
 import com.github.tobiasmiosczka.nami.model.Nami;
 
 import java.io.IOException;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nami.connector.exception.NamiLoginException;
+
 
 /**
  * A login screen that offers login via email/password.
@@ -71,12 +73,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
+
         try {
             String versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             TextView tvVersion = findViewById(R.id.tv_version);
             tvVersion.setText(getString(R.string.app_version) + versionName);
         } catch (PackageManager.NameNotFoundException ignored) {
+        //TODO: Implement
         }
+
+        Updater.checkUpdate(this);
     }
 
 
