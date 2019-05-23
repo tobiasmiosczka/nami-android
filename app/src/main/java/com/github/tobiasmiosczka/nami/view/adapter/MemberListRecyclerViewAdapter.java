@@ -38,7 +38,7 @@ public class MemberListRecyclerViewAdapter extends RecyclerView.Adapter<MemberLi
         return new ViewHolder(view);
     }
 
-    public int getCircle(NamiStufe stufe) {
+    private int getCircle(NamiStufe stufe) {
         if (stufe == null)
             return R.drawable.circle;
         switch (stufe) {
@@ -85,7 +85,7 @@ public class MemberListRecyclerViewAdapter extends RecyclerView.Adapter<MemberLi
         final ImageView image;
         final TextView name;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             layout = itemView.findViewById(R.id.member_list_item_layout);
             image = itemView.findViewById(R.id.member_list_item_image);

@@ -10,8 +10,8 @@ import com.github.tobiasmiosczka.nami.view.MemberDetailsPhoneFragment;
 
 public class MemberDetailsPageAdapter extends FragmentPagerAdapter {
 
-    final MemberDetailsGeneralFragment memberDetailsGeneralFragment;
-    final MemberDetailsPhoneFragment memberDetailsPhoneFragment;
+    private final MemberDetailsGeneralFragment memberDetailsGeneralFragment;
+    private final MemberDetailsPhoneFragment memberDetailsPhoneFragment;
 
     public MemberDetailsPageAdapter(FragmentManager fm, int id) {
         super(fm);

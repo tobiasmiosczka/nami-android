@@ -59,7 +59,7 @@ public class Nami implements NamiDataLoaderHandler {
         Nami.getInstance().loadData();
     }
 
-    public void loadData() {
+    private void loadData() {
         NamiSearchedValues namiSearchedValues = new NamiSearchedValues();
         namiSearchedValues.setMitgliedStatus(NamiMitgliedStatus.AKTIV);
         NaMiDataLoader dataLoader = new NaMiDataLoader(this.namiConnector, namiSearchedValues, this);

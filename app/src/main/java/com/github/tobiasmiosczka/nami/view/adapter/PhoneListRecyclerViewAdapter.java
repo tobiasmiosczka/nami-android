@@ -50,7 +50,7 @@ public class PhoneListRecyclerViewAdapter extends RecyclerView.Adapter<PhoneList
         private final Button button;
         private final TextView name;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             button = itemView.findViewById(R.id.phone_list_item_button);
             name = itemView.findViewById(R.id.phone_list_item_name);
