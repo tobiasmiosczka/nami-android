@@ -7,10 +7,14 @@ import com.github.javiersantos.appupdater.enums.UpdateFrom;
 
 public class Updater {
 
+    private static final String USER = "tobiasmiosczka";
+    private static final String REPO = "nami-android";
+
     public static void checkUpdate(Context context) {
         new AppUpdater(context)
                 .setUpdateFrom(UpdateFrom.GITHUB)
-                .setGitHubUserAndRepo("tobiasmiosczka", "nami-android")
+                .setGitHubUserAndRepo(USER, REPO)
+                .setButtonDoNotShowAgain(null)
                 .start();
     }
 }
